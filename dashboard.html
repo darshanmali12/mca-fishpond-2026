@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fishpond Admin Dashboard</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- Background Decoration -->
+    <div class="dashboard-bubbles bubble-1"></div>
+    <div class="dashboard-bubbles bubble-2"></div>
+    <div class="dashboard-bubbles bubble-3"></div>
+
+    <div class="dashboard-fish fish-1">🐟</div>
+    <div class="dashboard-fish fish-2">🐠</div>
+    <div class="dashboard-fish fish-3">🐡</div>
+
+
+    <!-- Main Container -->
+    <main class="dashboard-wrapper">
+
+
+        <!-- College Header -->
+        <header class="college-header dashboard-college-header">
+
+            <div class="college-logo">
+
+                <img
+                    src="college-logo.png"
+                    alt="Dr. J. J. Magdum College of Engineering Logo"
+                >
+
+            </div>
+
+            <div class="college-info">
+
+                <h2>
+                    Dr. J. J. Magdum College of Engineering
+                </h2>
+
+                <p>
+                    Jaysingpur
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- Dashboard Header -->
+        <section class="dashboard-top">
+
+            <div>
+
+                <div class="dashboard-badge">
+                    🐟 ADMIN PANEL
+                </div>
+
+                <h1>
+                    Fishpond Dashboard
+                </h1>
+
+                <p>
+                    MCA Fresher Party 2026
+                </p>
+
+            </div>
+
+
+            <button
+                id="logoutBtn"
+                class="dashboard-logout-btn"
+            >
+                🚪 Logout
+            </button>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             STATISTICS
+        ====================================================== -->
+
+        <section class="stats-container">
+
+
+            <!-- Total -->
+            <div class="stat-box modern-stat total-stat">
+
+                <div class="stat-icon">
+                    🐟
+                </div>
+
+                <div>
+
+                    <h2 id="totalFishponds">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Fishponds
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Dance -->
+            <div class="stat-box modern-stat">
+
+                <div class="stat-icon">
+                    💃
+                </div>
+
+                <div>
+
+                    <h2 id="danceCount">
+                        0
+                    </h2>
+
+                    <p>
+                        Dance
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Music -->
+            <div class="stat-box modern-stat">
+
+                <div class="stat-icon">
+                    🎵
+                </div>
+
+                <div>
+
+                    <h2 id="musicCount">
+                        0
+                    </h2>
+
+                    <p>
+                        Music / Song
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Tasks -->
+            <div class="stat-box modern-stat">
+
+                <div class="stat-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h2 id="taskCount">
+                        0
+                    </h2>
+
+                    <p>
+                        Tasks
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FISHPOND SUBMISSION CONTROL
+        ====================================================== -->
+
+        <section class="submission-control-card">
+
+            <div class="submission-control-info">
+
+                <div class="submission-control-icon">
+                    🐟
+                </div>
+
+                <div>
+
+                    <h2>
+                        Fishpond Submissions
+                    </h2>
+
+                    <p id="submissionStatusText">
+                        Checking submission status...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="submission-control-action">
+
+                <div
+                    id="submissionStatusBadge"
+                    class="submission-status-badge"
+                >
+                    <span
+                        id="submissionStatusDot"
+                        class="submission-status-dot"
+                    ></span>
+
+                    <span id="submissionStatusLabel">
+                        Checking...
+                    </span>
+
+                </div>
+
+
+                <button
+                    id="toggleSubmissionBtn"
+                    class="submission-toggle-btn"
+                    type="button"
+                >
+                    Checking...
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             MAIN DASHBOARD CARD
+        ====================================================== -->
+
+        <section class="dashboard-main-card">
+
+
+            <!-- Section Heading -->
+            <div class="dashboard-section-heading">
+
+                <div>
+
+                    <h2>
+                        📋 Fishpond Records
+                    </h2>
+
+                    <p>
+                        View and manage all submitted fishponds
+                    </p>
+
+                </div>
+
+
+                <div class="live-status">
+
+                    <span class="status-dot"></span>
+
+                    Live Data
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTERS
+            ================================================== -->
+
+            <div class="filter-section modern-filters">
+
+
+                <!-- Search -->
+                <div class="filter-input-wrapper">
+
+                    <span>
+                        🔎
+                    </span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search name, roll number or content..."
+                    >
+
+                </div>
+
+
+
+                <!-- Type -->
+                <select id="typeFilter">
+
+                    <option value="all">
+                        🎭 All Fishpond Types
+                    </option>
+
+                    <option value="Funny Statement">
+                        😂 Funny Statement
+                    </option>
+
+                    <option value="Quote">
+                        💭 Quote
+                    </option>
+
+                    <option value="Music/Song">
+                        🎵 Music/Song
+                    </option>
+
+                    <option value="Dialogue">
+                        🎬 Dialogue
+                    </option>
+
+                    <option value="Dance">
+                        💃 Dance
+                    </option>
+
+                    <option value="Task/Challenge">
+                        🎯 Task/Challenge
+                    </option>
+
+                    <option value="Acting">
+                        🎭 Acting
+                    </option>
+
+                    <option value="Other">
+                        ✨ Other
+                    </option>
+
+                </select>
+
+
+
+                <!-- Class -->
+                <select id="classFilter">
+
+                    <option value="all">
+                        🎓 All Classes
+                    </option>
+
+                    <option value="MCA FY">
+                        MCA FY
+                    </option>
+
+                    <option value="MCA SY">
+                        MCA SY
+                    </option>
+
+                </select>
+
+
+
+                <!-- Refresh -->
+                <button
+                    id="refreshBtn"
+                    class="dashboard-action-btn refresh-btn"
+                    type="button"
+                >
+                    🔄 Refresh
+                </button>
+
+
+
+                <!-- Export -->
+                <button
+                    id="exportBtn"
+                    class="dashboard-action-btn export-btn"
+                    type="button"
+                >
+                    📥 Export CSV
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOADING
+            ================================================== -->
+
+            <div
+                id="loadingMessage"
+                class="dashboard-loading"
+            >
+
+                <div class="loading-fish">
+                    🐟
+                </div>
+
+                <p>
+                    Loading fishpond records...
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+            ================================================== -->
+
+            <div class="table-container modern-table-container">
+
+                <table id="fishpondTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                🎁 Giver
+                            </th>
+
+                            <th>
+                                🎯 Receiver
+                            </th>
+
+                            <th>
+                                🎭 Type
+                            </th>
+
+                            <th>
+                                💬 Fishpond Content
+                            </th>
+
+                            <th>
+                                🕐 Date & Time
+                            </th>
+
+                            <th>
+                                ⚙️ Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="fishpondTableBody">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
+
+        <footer class="dashboard-footer">
+
+            <div class="footer-fish">
+                🐟
+            </div>
+
+            <div>
+
+                <strong>
+                    FISHPOND • MCA FRESHER PARTY 2026
+                </strong>
+
+                <p>
+                    Dr. J. J. Magdum College of Engineering, Jaysingpur
+                </p>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FISHPOND DETAILS MODAL
+    ========================================================== -->
+
+    <div
+        id="fishpondModal"
+        class="modal modern-modal"
+    >
+
+        <div class="modal-content modern-modal-content">
+
+
+            <button
+                id="closeModal"
+                class="modern-modal-close"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-title">
+
+                <span>
+                    🐟
+                </span>
+
+                <div>
+
+                    <h2>
+                        Fishpond Details
+                    </h2>
+
+                    <p>
+                        Complete submission information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div id="fishpondDetails"></div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Firebase Dashboard Script -->
+    <script
+        type="module"
+        src="dashboard.js"
+    ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Fishpond | MCA Fresher Party 2026</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+
+<body class="fishpond-page">
+
+
+    <!-- =========================================
+         BACKGROUND DECORATION
+    ========================================== -->
+
+    <div class="background-bubble bubble-one"></div>
+    <div class="background-bubble bubble-two"></div>
+    <div class="background-bubble bubble-three"></div>
+
+    <div class="floating-fish floating-fish-one">
+        🐟
+    </div>
+
+    <div class="floating-fish floating-fish-two">
+        🐠
+    </div>
+
+    <div class="floating-fish floating-fish-three">
+        🐡
+    </div>
+
+
+    <!-- =========================================
+         MAIN CONTAINER
+    ========================================== -->
+
+    <main class="fishpond-wrapper">
+
+
+        <!-- =====================================
+             COLLEGE HEADER
+        ====================================== -->
+
+        <header class="college-header">
+
+            <div class="college-logo">
+
+                <img
+                    src="JJMCOE.jpg"
+                    alt="Dr. J. J. Magdum College of Engineering Logo">
+
+            </div>
+
+
+            <div class="college-info">
+
+                <h2>
+                    Dr. J. J. Magdum College of Engineering
+                </h2>
+
+                <p>
+                    Jaysingpur
+                </p>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================
+             HERO SECTION
+        ====================================== -->
+
+        <section class="hero-section">
+
+            <div class="hero-fish">
+                🐟
+            </div>
+
+            <div class="party-badge">
+                🎓 MCA FRESHER PARTY 2026
+            </div>
+
+            <h1>
+                FISHPOND
+            </h1>
+
+            <h3>
+                Give a challenge. Create a memory.
+                Make someone smile! 🎉
+            </h3>
+
+            <p>
+                Send a funny statement, quote, song,
+                dialogue, dance, task or challenge
+                to your fellow student.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             FISHPOND CARD
+        ====================================== -->
+
+        <section class="fishpond-card">
+
+
+            <div class="card-heading">
+
+                <span class="heading-icon">
+                    🐟
+                </span>
+
+                <div>
+
+                    <h2>
+                        Create a Fishpond
+                    </h2>
+
+                    <p>
+                        Fill in the details below
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 FORM
+            ================================== -->
+
+            <div id="submissionClosedBanner" class="submission-closed-banner">
+    <div class="submission-closed-icon">🐟</div>
+
+    <div>
+        <h3>Fishpond Submissions Closed</h3>
+        <p id="studentSubmissionStatus">
+            The admin has temporarily stopped accepting Fishponds.
+            Please try again later.
+        </p>
+    </div>
+</div>
+            <form id="fishpondForm">
+
+
+                <!-- =================================
+                     GIVER + RECEIVER
+                ================================== -->
+
+                <div class="people-section">
+
+
+                    <!-- GIVER -->
+
+                    <div class="person-box giver-box">
+
+                        <div class="person-title">
+
+                            <span>
+                                🎁
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Fishpond Giver
+                                </h3>
+
+                                <p>
+                                    Student giving the fishpond
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Roll -->
+
+                        <div class="input-group">
+
+                            <label for="giverRoll">
+                                Roll Number
+                            </label>
+
+                            <input
+                                type="number"
+                                id="giverRoll"
+                                min="1"
+                                max="70"
+                                placeholder="Enter roll no. (1-70)"
+                                required>
+
+                        </div>
+
+
+                        <!-- Name -->
+
+                        <div class="input-group">
+
+                            <label for="giverNameInput">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="giverNameInput"
+                                placeholder="e.g. Rahul Patil"
+                                autocomplete="off"
+                                required>
+
+                        </div>
+
+
+                        <!-- Class -->
+
+                        <div class="input-group">
+
+                            <label for="giverClassInput">
+                                Class
+                            </label>
+
+                            <select
+                                id="giverClassInput"
+                                required>
+
+                                <option value="">
+                                    Select Class
+                                </option>
+
+                                <option value="MCA FY">
+                                    MCA FY
+                                </option>
+
+                                <option value="MCA SY">
+                                    MCA SY
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ARROW -->
+
+                    <div class="people-divider">
+
+                        <span>
+                            ➜
+                        </span>
+
+                    </div>
+
+
+                    <!-- RECEIVER -->
+
+                    <div class="person-box receiver-box">
+
+                        <div class="person-title">
+
+                            <span>
+                                🎯
+                            </span>
+
+                            <div>
+
+                                <h3>
+                                    Fishpond Receiver
+                                </h3>
+
+                                <p>
+                                    Student receiving the fishpond
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Roll -->
+
+                        <div class="input-group">
+
+                            <label for="receiverRoll">
+                                Roll Number
+                            </label>
+
+                            <input
+                                type="number"
+                                id="receiverRoll"
+                                min="1"
+                                max="70"
+                                placeholder="Enter roll no. (1-70)"
+                                required>
+
+                        </div>
+
+
+                        <!-- Name -->
+
+                        <div class="input-group">
+
+                            <label for="receiverNameInput">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="receiverNameInput"
+                                placeholder="e.g. Amit Patil"
+                                autocomplete="off"
+                                required>
+
+                        </div>
+
+
+                        <!-- Class -->
+
+                        <div class="input-group">
+
+                            <label for="receiverClassInput">
+                                Class
+                            </label>
+
+                            <select
+                                id="receiverClassInput"
+                                required>
+
+                                <option value="">
+                                    Select Class
+                                </option>
+
+                                <option value="MCA FY">
+                                    MCA FY
+                                </option>
+
+                                <option value="MCA SY">
+                                    MCA SY
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     FISHPOND TYPE
+                ================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="section-label">
+
+                        <span>
+                            🎭
+                        </span>
+
+                        <div>
+
+                            <label for="fishpondType">
+                                Fishpond Type
+                            </label>
+
+                            <small>
+                                What kind of fishpond is it?
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <select
+                        id="fishpondType"
+                        class="main-select"
+                        required>
+
+                        <option value="">
+                            Select Fishpond Type
+                        </option>
+
+                        <option value="Funny Statement">
+                            😂 Funny Statement
+                        </option>
+
+                        <option value="Quote">
+                            💭 Quote
+                        </option>
+
+                        <option value="Music/Song">
+                            🎵 Music / Song
+                        </option>
+
+                        <option value="Dialogue">
+                            🎬 Dialogue
+                        </option>
+
+                        <option value="Dance">
+                            💃 Dance
+                        </option>
+
+                        <option value="Task/Challenge">
+                            🎯 Task / Challenge
+                        </option>
+
+                        <option value="Acting">
+                            🎭 Acting
+                        </option>
+
+                        <option value="Other">
+                            ✨ Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- =================================
+                     CONTENT
+                ================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="section-label">
+
+                        <span>
+                            💬
+                        </span>
+
+                        <div>
+
+                            <label for="fishpondContent">
+                                Fishpond Message
+                            </label>
+
+                            <small>
+                                Write the statement, quote,
+                                task, dialogue or challenge
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="textarea-wrapper">
+
+                        <textarea
+                            id="fishpondContent"
+                            rows="5"
+                            maxlength="500"
+                            placeholder="Write your fishpond here..."
+                            required></textarea>
+
+
+                        <div class="character-counter">
+
+                            <span id="characterCount">
+                                0
+                            </span>
+
+                            / 500
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     AUDIO
+                ================================== -->
+
+                <div class="form-section">
+
+
+                    <div class="section-label">
+
+                        <span>
+                            🎵
+                        </span>
+
+                        <div>
+
+                            <label for="musicFile">
+                                Music / Audio
+                            </label>
+
+                            <small>
+                                Optional
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="upload-box">
+
+                        <input
+                            type="file"
+                            id="musicFile"
+                            accept="audio/*">
+
+                        <label for="musicFile">
+
+                            <span class="upload-icon">
+                                🎧
+                            </span>
+
+                            <strong>
+                                Choose Audio File
+                            </strong>
+
+                            <small>
+                                Optional music or audio
+                            </small>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     BUTTONS
+                ================================== -->
+
+                <div class="form-buttons">
+
+                    <button
+                        type="submit"
+                        id="submitBtn"
+                        class="submit-btn">
+
+                        🐟 Submit Fishpond
+
+                    </button>
+
+
+                    <button
+                        type="reset"
+                        id="resetBtn"
+                        class="reset-btn">
+
+                        ↻ Reset
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- =================================
+                 SUCCESS CARD
+            ================================== -->
+
+            <div
+                id="successCard"
+                class="success-card"
+                style="display: none;">
+
+
+                <div class="success-animation">
+                    🎉
+                </div>
+
+
+                <h2>
+                    Fishpond Submitted!
+                </h2>
+
+
+                <p class="success-subtitle">
+                    Your fishpond has been successfully
+                    recorded.
+                </p>
+
+
+                <div class="success-details">
+
+
+                    <div class="success-detail-row">
+
+                        <span>
+                            🎁 Giver
+                        </span>
+
+                        <strong id="successGiver">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="success-detail-row">
+
+                        <span>
+                            🎯 Receiver
+                        </span>
+
+                        <strong id="successReceiver">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="success-detail-row">
+
+                        <span>
+                            🎭 Type
+                        </span>
+
+                        <strong id="successType">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="success-detail-content">
+
+                        <span>
+                            💬 Fishpond
+                        </span>
+
+                        <p id="successContent">
+                            -
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="newFishpondBtn"
+                    class="new-fishpond-btn">
+
+                    🐟 Give Another Fishpond
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="fishpond-footer">
+
+            <div class="footer-fish">
+                🐟
+            </div>
+
+            <div>
+
+                <strong>
+                    FISHPOND • MCA FRESHER PARTY 2026
+                </strong>
+
+                <p>
+                    Dr. J. J. Magdum College of Engineering,
+                    Jaysingpur
+                </p>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="script.js">
+    </script>
+
+</body>
+
+</html>
