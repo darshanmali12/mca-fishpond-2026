@@ -20,7 +20,7 @@ import {
 
 const firebaseConfig = {
 
-    apiKey: "AIzaSyDTF9PonOdOnPhAFam5DHg6Cm-j-I650Uo",
+    apiKey: "AIzaSyDTF9PonOdOnPhAFam5dhg6Cm-j-I650Uo",
 
     authDomain: "mca-fishpond-2026.firebaseapp.com",
 
@@ -50,37 +50,59 @@ const db = getFirestore(app);
    GET HTML ELEMENTS
 ========================================== */
 
-// Giver
-const giverRoll = document.getElementById("giverRoll");
-const giverNameInput = document.getElementById("giverNameInput");
-const giverClassInput = document.getElementById("giverClassInput");
-
 // Receiver
-const receiverRoll = document.getElementById("receiverRoll");
-const receiverNameInput = document.getElementById("receiverNameInput");
-const receiverClassInput = document.getElementById("receiverClassInput");
+const receiverRoll =
+    document.getElementById("receiverRoll");
+
+const receiverNameInput =
+    document.getElementById("receiverNameInput");
+
+const receiverClassInput =
+    document.getElementById("receiverClassInput");
+
 
 // Fishpond
-const fishpondType = document.getElementById("fishpondType");
-const fishpondContent = document.getElementById("fishpondContent");
-const musicFile = document.getElementById("musicFile");
+const fishpondType =
+    document.getElementById("fishpondType");
+
+const fishpondContent =
+    document.getElementById("fishpondContent");
+
+
+// Media Link
+const mediaLink =
+    document.getElementById("mediaLink");
+
 
 // Character counter
-const characterCount = document.getElementById("characterCount");
+const characterCount =
+    document.getElementById("characterCount");
+
 
 // Form
-const fishpondForm = document.getElementById("fishpondForm");
+const fishpondForm =
+    document.getElementById("fishpondForm");
+
 
 // Success card
-const successCard = document.getElementById("successCard");
+const successReceiver =
+    document.getElementById("successReceiver");
 
-const successGiver = document.getElementById("successGiver");
-const successReceiver = document.getElementById("successReceiver");
-const successType = document.getElementById("successType");
-const successContent = document.getElementById("successContent");
+const successType =
+    document.getElementById("successType");
+
+const successContent =
+    document.getElementById("successContent");
+
+
+// Success card itself
+const successCard =
+    document.getElementById("successCard");
+
 
 // New fishpond button
-const newFishpondBtn = document.getElementById("newFishpondBtn");
+const newFishpondBtn =
+    document.getElementById("newFishpondBtn");
 
 
 /* ==========================================
@@ -106,7 +128,36 @@ function isValidRollNumber(value) {
 
 function isValidName(name) {
 
-    return /^[A-Za-z ]+$/.test(name.trim());
+    return /^[A-Za-z ]+$/.test(
+        name.trim()
+    );
+
+}
+
+
+/* ==========================================
+   URL VALIDATION
+========================================== */
+
+function isValidURL(url) {
+
+    try {
+
+        const parsedURL =
+            new URL(url);
+
+        return (
+            parsedURL.protocol === "http:" ||
+            parsedURL.protocol === "https:"
+        );
+
+    }
+
+    catch (error) {
+
+        return false;
+
+    }
 
 }
 
@@ -115,12 +166,15 @@ function isValidName(name) {
    CHARACTER COUNTER
 ========================================== */
 
-fishpondContent.addEventListener("input", function () {
+fishpondContent.addEventListener(
+    "input",
+    function () {
 
-    characterCount.textContent =
-        this.value.length;
+        characterCount.textContent =
+            this.value.length;
 
-});
+    }
+);
 
 
 /* ==========================================
@@ -134,22 +188,15 @@ fishpondForm.addEventListener(
         event.preventDefault();
 
 
-        /* Get values */
-
-        const giverRollNumber =
-            Number(giverRoll.value);
+        /* ==========================================
+           GET VALUES
+        ========================================== */
 
         const receiverRollNumber =
             Number(receiverRoll.value);
 
-        const giverName =
-            giverNameInput.value.trim();
-
         const receiverName =
             receiverNameInput.value.trim();
-
-        const giverClass =
-            giverClassInput.value;
 
         const receiverClass =
             receiverClassInput.value;
@@ -160,29 +207,19 @@ fishpondForm.addEventListener(
         const content =
             fishpondContent.value.trim();
 
-
-        /* ==========================================
-           VALIDATE GIVER ROLL NUMBER
-        ========================================== */
-
-        if (!isValidRollNumber(giverRoll.value)) {
-
-            alert(
-                "Giver Roll Number must be between 1 and 70."
-            );
-
-            giverRoll.focus();
-
-            return;
-
-        }
+        const mediaURL =
+            mediaLink.value.trim();
 
 
         /* ==========================================
            VALIDATE RECEIVER ROLL NUMBER
         ========================================== */
 
-        if (!isValidRollNumber(receiverRoll.value)) {
+        if (
+            !isValidRollNumber(
+                receiverRoll.value
+            )
+        ) {
 
             alert(
                 "Receiver Roll Number must be between 1 and 70."
@@ -196,57 +233,14 @@ fishpondForm.addEventListener(
 
 
         /* ==========================================
-           PREVENT SAME STUDENT
-        ========================================== */
-
-        if (giverRollNumber === receiverRollNumber) {
-
-            alert(
-                "The giver and receiver cannot have the same Roll Number."
-            );
-
-            receiverRoll.focus();
-
-            return;
-
-        }
-
-
-        /* ==========================================
-           VALIDATE GIVER NAME
-        ========================================== */
-
-        if (!giverName) {
-
-            alert("Please enter the giver's full name.");
-
-            giverNameInput.focus();
-
-            return;
-
-        }
-
-
-        if (!isValidName(giverName)) {
-
-            alert(
-                "Giver name should contain only letters and spaces."
-            );
-
-            giverNameInput.focus();
-
-            return;
-
-        }
-
-
-        /* ==========================================
            VALIDATE RECEIVER NAME
         ========================================== */
 
         if (!receiverName) {
 
-            alert("Please enter the receiver's full name.");
+            alert(
+                "Please enter the receiver's full name."
+            );
 
             receiverNameInput.focus();
 
@@ -272,20 +266,11 @@ fishpondForm.addEventListener(
            VALIDATE CLASS
         ========================================== */
 
-        if (!giverClass) {
-
-            alert("Please select the giver's class.");
-
-            giverClassInput.focus();
-
-            return;
-
-        }
-
-
         if (!receiverClass) {
 
-            alert("Please select the receiver's class.");
+            alert(
+                "Please select the receiver's class."
+            );
 
             receiverClassInput.focus();
 
@@ -300,7 +285,9 @@ fishpondForm.addEventListener(
 
         if (!type) {
 
-            alert("Please select a Fishpond type.");
+            alert(
+                "Please select a Fishpond type."
+            );
 
             fishpondType.focus();
 
@@ -315,7 +302,9 @@ fishpondForm.addEventListener(
 
         if (!content) {
 
-            alert("Please enter the Fishpond message.");
+            alert(
+                "Please enter the Fishpond message."
+            );
 
             fishpondContent.focus();
 
@@ -325,57 +314,100 @@ fishpondForm.addEventListener(
 
 
         /* ==========================================
-           SAVE TO FIRESTORE
+           VALIDATE MEDIA LINK
         ========================================== */
+
+        if (mediaURL && !isValidURL(mediaURL)) {
+
+            alert(
+                "Please enter a valid media link starting with http:// or https://"
+            );
+
+            mediaLink.focus();
+
+            return;
+
+        }
+
+
+        /* ==========================================
+           DISABLE SUBMIT BUTTON
+        ========================================== */
+
+        const submitBtn =
+            document.getElementById(
+                "submitBtn"
+            );
+
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Saving Fishpond...";
+
 
         try {
 
+            /* ==========================================
+               CREATE FIRESTORE DOCUMENT
+            ========================================== */
+
             const fishpondData = {
 
-                giverRoll: giverRollNumber,
+                // Receiver information
 
-                giverName: giverName,
+                receiverRoll:
+                    receiverRollNumber,
 
-                giverClass: giverClass,
+                receiverName:
+                    receiverName,
 
-
-                receiverRoll: receiverRollNumber,
-
-                receiverName: receiverName,
-
-                receiverClass: receiverClass,
+                receiverClass:
+                    receiverClass,
 
 
-                fishpondType: type,
+                // Fishpond information
 
-                fishpondContent: content,
+                fishpondType:
+                    type,
 
-
-                // Audio file name only for now
-                audioFileName:
-                    musicFile.files.length > 0
-                        ? musicFile.files[0].name
-                        : "",
+                fishpondContent:
+                    content,
 
 
-                createdAt: serverTimestamp()
+                // Media information
+
+                mediaLink:
+                    mediaURL,
+
+
+                // Timestamp
+
+                createdAt:
+                    serverTimestamp()
 
             };
 
 
-            await addDoc(
-                collection(db, "fishponds"),
-                fishpondData
+            const fishpondDoc =
+                await addDoc(
+                    collection(
+                        db,
+                        "fishponds"
+                    ),
+                    fishpondData
+                );
+
+
+            console.log(
+                "Fishpond saved successfully:",
+                fishpondDoc.id
             );
 
 
             /* ==========================================
                SHOW SUCCESS INFORMATION
             ========================================== */
-
-            successGiver.textContent =
-                `${giverName} (Roll No. ${giverRollNumber}, ${giverClass})`;
-
 
             successReceiver.textContent =
                 `${receiverName} (Roll No. ${receiverRollNumber}, ${receiverClass})`;
@@ -389,22 +421,30 @@ fishpondForm.addEventListener(
                 content;
 
 
-            /* Hide form */
+            /* ==========================================
+               HIDE FORM
+            ========================================== */
 
             fishpondForm.style.display =
                 "none";
 
 
-            /* Show success */
+            /* ==========================================
+               SHOW SUCCESS CARD
+            ========================================== */
 
             successCard.style.display =
                 "block";
 
 
-            /* Scroll */
+            /* ==========================================
+               SCROLL TO SUCCESS CARD
+            ========================================== */
 
             successCard.scrollIntoView({
+
                 behavior: "smooth"
+
             });
 
 
@@ -419,8 +459,19 @@ fishpondForm.addEventListener(
 
 
             alert(
-                "Fishpond could not be saved. Please try again."
+                "Fishpond could not be saved.\n\n" +
+                error.message
             );
+
+        }
+
+        finally {
+
+            submitBtn.disabled =
+                false;
+
+            submitBtn.textContent =
+                "🐟 Submit Fishpond";
 
         }
 
@@ -443,14 +494,13 @@ newFishpondBtn.addEventListener(
             "0";
 
 
-        successGiver.textContent =
-            "-";
-
         successReceiver.textContent =
             "-";
 
+
         successType.textContent =
             "-";
+
 
         successContent.textContent =
             "-";
@@ -475,69 +525,105 @@ newFishpondBtn.addEventListener(
     }
 );
 
-// =========================================================
-// FISHPOND SUBMISSION STATUS
-// =========================================================
+
+/* =========================================================
+   FISHPOND SUBMISSION STATUS
+========================================================= */
 
 const submissionClosedBanner =
-    document.getElementById("submissionClosedBanner");
+    document.getElementById(
+        "submissionClosedBanner"
+    );
+
 
 const studentSubmissionStatus =
-    document.getElementById("studentSubmissionStatus");
+    document.getElementById(
+        "studentSubmissionStatus"
+    );
+
 
 const fishpondFormElement =
-    document.getElementById("fishpondForm");
+    document.getElementById(
+        "fishpondForm"
+    );
+
 
 const fishpondSettingsRef =
-    doc(db, "settings", "fishpond");
+    doc(
+        db,
+        "settings",
+        "fishpond"
+    );
+
 
 onSnapshot(
     fishpondSettingsRef,
+
     (snapshot) => {
 
-        // If the settings document does not exist,
-        // allow submissions by default.
         const acceptingSubmissions =
             snapshot.exists()
                 ? snapshot.data().acceptingSubmissions !== false
                 : true;
 
+
         if (acceptingSubmissions) {
 
-            // -------------------------
-            // SUBMISSIONS OPEN
-            // -------------------------
+            /* =========================
+               SUBMISSIONS OPEN
+            ========================= */
 
             if (submissionClosedBanner) {
-                submissionClosedBanner.style.display = "none";
+
+                submissionClosedBanner.style.display =
+                    "none";
+
             }
 
+
             if (fishpondFormElement) {
+
                 fishpondFormElement.classList.remove(
                     "submissions-closed"
                 );
 
+
                 fishpondFormElement
-                    .querySelectorAll("input, select, textarea, button")
+                    .querySelectorAll(
+                        "input, select, textarea, button"
+                    )
                     .forEach((element) => {
-                        element.disabled = false;
+
+                        element.disabled =
+                            false;
+
                     });
+
             }
 
-        } else {
+        }
 
-            // -------------------------
-            // SUBMISSIONS CLOSED
-            // -------------------------
+        else {
+
+            /* =========================
+               SUBMISSIONS CLOSED
+            ========================= */
 
             if (submissionClosedBanner) {
-                submissionClosedBanner.style.display = "flex";
+
+                submissionClosedBanner.style.display =
+                    "flex";
+
             }
 
+
             if (studentSubmissionStatus) {
+
                 studentSubmissionStatus.textContent =
                     "The admin has temporarily stopped accepting Fishponds. Please try again later.";
+
             }
+
 
             if (fishpondFormElement) {
 
@@ -545,19 +631,32 @@ onSnapshot(
                     "submissions-closed"
                 );
 
+
                 fishpondFormElement
-                    .querySelectorAll("input, select, textarea, button")
+                    .querySelectorAll(
+                        "input, select, textarea, button"
+                    )
                     .forEach((element) => {
-                        element.disabled = true;
+
+                        element.disabled =
+                            true;
+
                     });
+
             }
+
         }
+
     },
 
+
     (error) => {
+
         console.error(
             "Unable to check Fishpond submission status:",
             error
         );
+
     }
+
 );
