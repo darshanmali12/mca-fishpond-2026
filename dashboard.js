@@ -845,15 +845,7 @@ function displayFishponds(fishponds) {
 
                     <br>
 
-                    <span>
-                        Roll No:
-                        ${escapeHTML(
-                            fishpond.receiverRoll
-                        )}
-                    </span>
-
-                    <br>
-
+                
                     <span>
                         ${escapeHTML(
                             fishpond.receiverClass
@@ -972,11 +964,6 @@ function applyFilters() {
                     ).toLowerCase();
 
 
-                const receiverRoll =
-                    String(
-                        fishpond.receiverRoll || ""
-                    );
-
 
                 const mediaLink =
                     String(
@@ -985,13 +972,6 @@ function applyFilters() {
 
 
                 const matchesSearch =
-
-                    receiverRoll.includes(
-                        searchText
-                    )
-
-                    ||
-
                     receiverName.includes(
                         searchText
                     )
@@ -1308,18 +1288,7 @@ window.viewFishpond =
             </div>
 
 
-            <div class="detail-row">
-
-                <strong>
-                    Receiver Roll No:
-                </strong>
-
-                ${escapeHTML(
-                    fishpond.receiverRoll
-                )}
-
-            </div>
-
+        
 
             <div class="detail-row">
 
@@ -1525,8 +1494,6 @@ exportBtn.addEventListener(
 
         const headers = [
 
-            "Receiver Roll No",
-
             "Receiver Name",
 
             "Receiver Class",
@@ -1555,7 +1522,6 @@ exportBtn.addEventListener(
 
                     return [
 
-                        fishpond.receiverRoll || "",
 
                         fishpond.receiverName || "",
 
