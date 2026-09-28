@@ -167,210 +167,94 @@
             <form id="fishpondForm">
 
 
-                <!-- =================================
-                     GIVER + RECEIVER
-                ================================== -->
+            <!-- =================================
+     RECEIVER DETAILS
+================================== -->
 
-                <div class="people-section">
+<div class="people-section">
 
+    <div class="person-box receiver-box">
 
-                    <!-- GIVER -->
+        <div class="person-title">
+            <span>🎯</span>
 
-                    <div class="person-box giver-box">
+            <div>
+                <h3>Fishpond Receiver</h3>
+                <p>Student receiving the Fishpond</p>
+            </div>
+        </div>
 
-                        <div class="person-title">
+        <!-- Receiver Roll Number -->
 
-                            <span>
-                                🎁
-                            </span>
+        <div class="input-group">
 
-                            <div>
+            <label for="receiverRoll">
+                Roll Number
+            </label>
 
-                                <h3>
-                                    Fishpond Giver
-                                </h3>
+            <input
+                type="number"
+                id="receiverRoll"
+                min="1"
+                max="70"
+                placeholder="Enter roll no. (1-70)"
+                required
+            >
 
-                                <p>
-                                    Student giving the fishpond
-                                </p>
+        </div>
 
-                            </div>
 
-                        </div>
+        <!-- Receiver Name -->
 
+        <div class="input-group">
 
-                        <!-- Roll -->
+            <label for="receiverNameInput">
+                Full Name
+            </label>
 
-                        <div class="input-group">
+            <input
+                type="text"
+                id="receiverNameInput"
+                placeholder="e.g. Amit Patil"
+                autocomplete="off"
+                required
+            >
 
-                            <label for="giverRoll">
-                                Roll Number
-                            </label>
+        </div>
 
-                            <input
-                                type="number"
-                                id="giverRoll"
-                                min="1"
-                                max="70"
-                                placeholder="Enter roll no. (1-70)"
-                                required>
 
-                        </div>
+        <!-- Receiver Class -->
 
+        <div class="input-group">
 
-                        <!-- Name -->
+            <label for="receiverClassInput">
+                Class
+            </label>
 
-                        <div class="input-group">
+            <select
+                id="receiverClassInput"
+                required
+            >
 
-                            <label for="giverNameInput">
-                                Full Name
-                            </label>
+                <option value="">
+                    Select Class
+                </option>
 
-                            <input
-                                type="text"
-                                id="giverNameInput"
-                                placeholder="e.g. Rahul Patil"
-                                autocomplete="off"
-                                required>
+                <option value="MCA FY">
+                    MCA FY
+                </option>
 
-                        </div>
+                <option value="MCA SY">
+                    MCA SY
+                </option>
 
+            </select>
 
-                        <!-- Class -->
+        </div>
 
-                        <div class="input-group">
+    </div>
 
-                            <label for="giverClassInput">
-                                Class
-                            </label>
-
-                            <select
-                                id="giverClassInput"
-                                required>
-
-                                <option value="">
-                                    Select Class
-                                </option>
-
-                                <option value="MCA FY">
-                                    MCA FY
-                                </option>
-
-                                <option value="MCA SY">
-                                    MCA SY
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- ARROW -->
-
-                    <div class="people-divider">
-
-                        <span>
-                            ➜
-                        </span>
-
-                    </div>
-
-
-                    <!-- RECEIVER -->
-
-                    <div class="person-box receiver-box">
-
-                        <div class="person-title">
-
-                            <span>
-                                🎯
-                            </span>
-
-                            <div>
-
-                                <h3>
-                                    Fishpond Receiver
-                                </h3>
-
-                                <p>
-                                    Student receiving the fishpond
-                                </p>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Roll -->
-
-                        <div class="input-group">
-
-                            <label for="receiverRoll">
-                                Roll Number
-                            </label>
-
-                            <input
-                                type="number"
-                                id="receiverRoll"
-                                min="1"
-                                max="70"
-                                placeholder="Enter roll no. (1-70)"
-                                required>
-
-                        </div>
-
-
-                        <!-- Name -->
-
-                        <div class="input-group">
-
-                            <label for="receiverNameInput">
-                                Full Name
-                            </label>
-
-                            <input
-                                type="text"
-                                id="receiverNameInput"
-                                placeholder="e.g. Amit Patil"
-                                autocomplete="off"
-                                required>
-
-                        </div>
-
-
-                        <!-- Class -->
-
-                        <div class="input-group">
-
-                            <label for="receiverClassInput">
-                                Class
-                            </label>
-
-                            <select
-                                id="receiverClassInput"
-                                required>
-
-                                <option value="">
-                                    Select Class
-                                </option>
-
-                                <option value="MCA FY">
-                                    MCA FY
-                                </option>
-
-                                <option value="MCA SY">
-                                    MCA SY
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                </div>
+</div>
 
 
                 <!-- =================================
@@ -422,25 +306,6 @@
                             🎵 Music / Song
                         </option>
 
-                        <option value="Dialogue">
-                            🎬 Dialogue
-                        </option>
-
-                        <option value="Dance">
-                            💃 Dance
-                        </option>
-
-                        <option value="Task/Challenge">
-                            🎯 Task / Challenge
-                        </option>
-
-                        <option value="Acting">
-                            🎭 Acting
-                        </option>
-
-                        <option value="Other">
-                            ✨ Other
-                        </option>
 
                     </select>
 
@@ -501,60 +366,45 @@
                 </div>
 
 
-                <!-- =================================
-                     AUDIO
-                ================================== -->
+              <!-- =================================
+     AUDIO / MEDIA LINK
+================================== -->
 
-                <div class="form-section">
+<div class="form-section">
+
+    <div class="section-label">
+
+        <span>
+            🎵
+        </span>
+
+        <div>
+
+            <label for="mediaLink">
+                Music / Audio Link
+            </label>
+
+            <small>
+                Optional - Paste a media or audio link
+            </small>
+
+        </div>
+
+    </div>
 
 
-                    <div class="section-label">
+    <div class="input-group">
 
-                        <span>
-                            🎵
-                        </span>
+        <input
+            type="url"
+            id="mediaLink"
+            placeholder="https://example.com/audio.mp3"
+            autocomplete="off"
+        >
 
-                        <div>
+    </div>
 
-                            <label for="musicFile">
-                                Music / Audio
-                            </label>
-
-                            <small>
-                                Optional
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="upload-box">
-
-                        <input
-                            type="file"
-                            id="musicFile"
-                            accept="audio/*">
-
-                        <label for="musicFile">
-
-                            <span class="upload-icon">
-                                🎧
-                            </span>
-
-                            <strong>
-                                Choose Audio File
-                            </strong>
-
-                            <small>
-                                Optional music or audio
-                            </small>
-
-                        </label>
-
-                    </div>
-
-                </div>
+</div>
 
 
                 <!-- =================================
@@ -617,17 +467,6 @@
                 <div class="success-details">
 
 
-                    <div class="success-detail-row">
-
-                        <span>
-                            🎁 Giver
-                        </span>
-
-                        <strong id="successGiver">
-                            -
-                        </strong>
-
-                    </div>
 
 
                     <div class="success-detail-row">
