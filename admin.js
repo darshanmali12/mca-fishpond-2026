@@ -1,5 +1,6 @@
-// Firebase Authentication
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
     getAuth,
@@ -7,7 +8,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-// Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyDTF9PonOdOnPhAFam5DHg6Cm-j-I650Uo",
     authDomain: "mca-fishpond-2026.firebaseapp.com",
@@ -19,21 +19,24 @@ const firebaseConfig = {
 };
 
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize Authentication
 const auth = getAuth(app);
 
 
-// Get HTML elements
-const adminLoginForm = document.getElementById("adminLoginForm");
-const adminEmail = document.getElementById("adminEmail");
-const adminPassword = document.getElementById("adminPassword");
-const loginMessage = document.getElementById("loginMessage");
+const adminLoginForm =
+    document.getElementById("adminLoginForm");
+
+const adminEmail =
+    document.getElementById("adminEmail");
+
+const adminPassword =
+    document.getElementById("adminPassword");
+
+const loginMessage =
+    document.getElementById("loginMessage");
 
 
-// Login
 adminLoginForm.addEventListener("submit", async (event) => {
 
     event.preventDefault();
@@ -45,23 +48,32 @@ adminLoginForm.addEventListener("submit", async (event) => {
 
     try {
 
-        await signInWithEmailAndPassword(
-            auth,
-            email,
-            password
-        );
+        // Firebase login
+        const userCredential =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
 
-        loginMessage.textContent = "Login successful!";
+        console.log("Login successful!");
+        console.log("Admin:", userCredential.user.email);
+        console.log("UID:", userCredential.user.uid);
 
-        // Open Admin Dashboard
-        window.location.href = "dashboard.html";
+        loginMessage.textContent =
+            "Login successful! Opening dashboard...";
+
+
+        // Redirect to dashboard
+        window.location.assign("dashboard.html");
+
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Firebase Login Error:", error);
 
         loginMessage.textContent =
-            "Login failed. Please check your email and password.";
+            "Login failed: " + error.code;
 
     }
 
