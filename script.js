@@ -192,8 +192,6 @@ fishpondForm.addEventListener(
            GET VALUES
         ========================================== */
 
-        const receiverRollNumber =
-            Number(receiverRoll.value);
 
         const receiverName =
             receiverNameInput.value.trim();
@@ -210,26 +208,6 @@ fishpondForm.addEventListener(
         const mediaURL =
             mediaLink.value.trim();
 
-
-        /* ==========================================
-           VALIDATE RECEIVER ROLL NUMBER
-        ========================================== */
-
-        if (
-            !isValidRollNumber(
-                receiverRoll.value
-            )
-        ) {
-
-            alert(
-                "Receiver Roll Number must be between 1 and 70."
-            );
-
-            receiverRoll.focus();
-
-            return;
-
-        }
 
 
         /* ==========================================
@@ -356,9 +334,6 @@ fishpondForm.addEventListener(
 
                 // Receiver information
 
-                receiverRoll:
-                    receiverRollNumber,
-
                 receiverName:
                     receiverName,
 
@@ -410,7 +385,7 @@ fishpondForm.addEventListener(
             ========================================== */
 
             successReceiver.textContent =
-                `${receiverName} (Roll No. ${receiverRollNumber}, ${receiverClass})`;
+                `${receiverName} (${receiverClass})`;
 
 
             successType.textContent =
