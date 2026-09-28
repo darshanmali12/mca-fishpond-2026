@@ -142,9 +142,6 @@ let allFishponds = [];
 // STORE SUBMISSION STATUS
 // =========================================================
 
-// true = students can submit
-// false = students cannot submit
-
 let acceptingSubmissions = true;
 
 
@@ -160,9 +157,6 @@ onAuthStateChanged(auth, (user) => {
             "Logged-in admin:",
             user.email
         );
-
-
-        // Load both dashboard data and submission status
 
         loadFishponds();
 
@@ -193,7 +187,6 @@ async function loadFishponds() {
         console.log(
             "Loading fishponds from Firestore..."
         );
-
 
         loadingMessage.style.display =
             "block";
@@ -307,8 +300,6 @@ async function loadSubmissionStatus() {
                 settingsSnapshot.data();
 
 
-            // If field exists, use it
-
             if (
                 typeof data.acceptingSubmissions ===
                 "boolean"
@@ -325,9 +316,6 @@ async function loadSubmissionStatus() {
             }
 
         } else {
-
-            // First time:
-            // create default OPEN status
 
             acceptingSubmissions =
                 true;
@@ -357,9 +345,6 @@ async function loadSubmissionStatus() {
         );
 
 
-        // Keep default open if status
-        // cannot be loaded
-
         acceptingSubmissions =
             true;
 
@@ -385,10 +370,6 @@ function updateSubmissionStatus() {
     if (
         acceptingSubmissions
     ) {
-
-        // =========================================
-        // OPEN
-        // =========================================
 
         submissionStatusLabel.textContent =
             "OPEN";
@@ -428,10 +409,6 @@ function updateSubmissionStatus() {
 
 
     } else {
-
-        // =========================================
-        // CLOSED
-        // =========================================
 
         submissionStatusLabel.textContent =
             "CLOSED";
@@ -482,10 +459,6 @@ toggleSubmissionBtn.addEventListener(
     "click",
     async () => {
 
-        // =========================================
-        // CLOSING SUBMISSIONS
-        // =========================================
-
         if (
             acceptingSubmissions
         ) {
@@ -501,11 +474,6 @@ toggleSubmissionBtn.addEventListener(
                 return;
 
             }
-
-
-        // =========================================
-        // OPENING SUBMISSIONS
-        // =========================================
 
         } else {
 
@@ -525,8 +493,6 @@ toggleSubmissionBtn.addEventListener(
 
 
         try {
-
-            // Disable button while saving
 
             toggleSubmissionBtn.disabled =
                 true;
@@ -564,8 +530,6 @@ toggleSubmissionBtn.addEventListener(
                 }
             );
 
-
-            // Update local status
 
             acceptingSubmissions =
                 newStatus;
@@ -680,17 +644,6 @@ function updateStatistics() {
 
     }
 
-
-    console.log(
-        "Statistics:",
-        {
-            total,
-            dance,
-            music,
-            task
-        }
-    );
-
 }
 
 
@@ -768,6 +721,68 @@ function formatDateTime(timestamp) {
 
 
 // =========================================================
+// DISPLAY MEDIA LINK
+// =========================================================
+
+function displayMediaLink(mediaLink) {
+
+    if (!mediaLink) {
+
+        return `
+            <span style="color:#888;">
+                No link
+            </span>
+        `;
+
+    }
+
+
+    try {
+
+        const url =
+            new URL(mediaLink);
+
+
+        if (
+            url.protocol !== "http:" &&
+            url.protocol !== "https:"
+        ) {
+
+            return `
+                <span style="color:#888;">
+                    Invalid link
+                </span>
+            `;
+
+        }
+
+
+        return `
+            <a
+                href="${escapeHTML(mediaLink)}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="media-link"
+            >
+                🔗 Open Link
+            </a>
+        `;
+
+
+    } catch (error) {
+
+        return `
+            <span style="color:#888;">
+                Invalid link
+            </span>
+        `;
+
+    }
+
+}
+
+
+// =========================================================
 // DISPLAY FISHPONDS
 // =========================================================
 
@@ -824,34 +839,6 @@ function displayFishponds(fishponds) {
 
                     <strong>
                         ${escapeHTML(
-                            fishpond.giverName
-                        )}
-                    </strong>
-
-                    <br>
-
-                    <span>
-                        Roll No:
-                        ${escapeHTML(
-                            fishpond.giverRoll
-                        )}
-                    </span>
-
-                    <br>
-
-                    <span>
-                        ${escapeHTML(
-                            fishpond.giverClass
-                        )}
-                    </span>
-
-                </td>
-
-
-                <td>
-
-                    <strong>
-                        ${escapeHTML(
                             fishpond.receiverName
                         )}
                     </strong>
@@ -889,6 +876,15 @@ function displayFishponds(fishponds) {
 
                     ${escapeHTML(
                         fishpond.fishpondContent
+                    )}
+
+                </td>
+
+
+                <td>
+
+                    ${displayMediaLink(
+                        fishpond.mediaLink
                     )}
 
                 </td>
@@ -957,11 +953,6 @@ function applyFilters() {
         allFishponds.filter(
             (fishpond) => {
 
-                const giverName =
-                    String(
-                        fishpond.giverName || ""
-                    ).toLowerCase();
-
 
                 const receiverName =
                     String(
@@ -981,33 +972,21 @@ function applyFilters() {
                     ).toLowerCase();
 
 
-                const giverRoll =
-                    String(
-                        fishpond.giverRoll || ""
-                    );
-
-
                 const receiverRoll =
                     String(
                         fishpond.receiverRoll || ""
                     );
 
 
+                const mediaLink =
+                    String(
+                        fishpond.mediaLink || ""
+                    ).toLowerCase();
+
+
                 const matchesSearch =
 
-                    giverRoll.includes(
-                        searchText
-                    )
-
-                    ||
-
                     receiverRoll.includes(
-                        searchText
-                    )
-
-                    ||
-
-                    giverName.includes(
                         searchText
                     )
 
@@ -1027,6 +1006,12 @@ function applyFilters() {
 
                     fishpondContent.includes(
                         searchText
+                    )
+
+                    ||
+
+                    mediaLink.includes(
+                        searchText
                     );
 
 
@@ -1043,11 +1028,6 @@ function applyFilters() {
                 const matchesClass =
 
                     selectedClass === "all"
-
-                    ||
-
-                    fishpond.giverClass ===
-                    selectedClass
 
                     ||
 
@@ -1209,8 +1189,7 @@ function escapeHTML(value) {
 // =========================================================
 
 window.viewFishpond =
-    function (id) {
-
+    async function (id) {
 
         const fishpond =
             allFishponds.find(
@@ -1232,49 +1211,89 @@ window.viewFishpond =
             );
 
 
+        let mediaHTML = "";
+
+
+        if (
+            fishpond.mediaLink
+        ) {
+
+            try {
+
+                const url =
+                    new URL(
+                        fishpond.mediaLink
+                    );
+
+
+                if (
+                    url.protocol === "http:" ||
+                    url.protocol === "https:"
+                ) {
+
+                    mediaHTML = `
+
+                        <div
+                            style="
+                                margin-top:10px;
+                                word-break:break-all;
+                            "
+                        >
+
+                            <a
+                                href="${escapeHTML(
+                                    fishpond.mediaLink
+                                )}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                🔗 Open Media Link
+                            </a>
+
+                            <br>
+
+                            <small>
+                                ${escapeHTML(
+                                    fishpond.mediaLink
+                                )}
+                            </small>
+
+                        </div>
+
+                    `;
+
+                } else {
+
+                    mediaHTML = `
+                        <span>
+                            Invalid media link
+                        </span>
+                    `;
+
+                }
+
+            } catch (error) {
+
+                mediaHTML = `
+                    <span>
+                        Invalid media link
+                    </span>
+                `;
+
+            }
+
+        } else {
+
+            mediaHTML = `
+                <span>
+                    No media link provided
+                </span>
+            `;
+
+        }
+
+
         fishpondDetails.innerHTML = `
-
-            <div class="detail-row">
-
-                <strong>
-                    Giver:
-                </strong>
-
-                ${escapeHTML(
-                    fishpond.giverName
-                )}
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <strong>
-                    Giver Roll No:
-                </strong>
-
-                ${escapeHTML(
-                    fishpond.giverRoll
-                )}
-
-            </div>
-
-
-            <div class="detail-row">
-
-                <strong>
-                    Giver Class:
-                </strong>
-
-                ${escapeHTML(
-                    fishpond.giverClass
-                )}
-
-            </div>
-
-
-            <hr>
-
 
             <div class="detail-row">
 
@@ -1349,16 +1368,10 @@ window.viewFishpond =
             <div class="detail-row">
 
                 <strong>
-                    Audio File:
+                    🔗 Media Link:
                 </strong>
 
-                ${
-                    fishpond.audioFileName
-                    ? escapeHTML(
-                        fishpond.audioFileName
-                    )
-                    : "No audio uploaded"
-                }
+                ${mediaHTML}
 
             </div>
 
@@ -1426,7 +1439,6 @@ window.addEventListener(
 window.deleteFishpond =
     async function (id) {
 
-
         const fishpond =
             allFishponds.find(
                 item =>
@@ -1443,7 +1455,7 @@ window.deleteFishpond =
 
         const confirmDelete =
             confirm(
-                `Are you sure you want to delete the Fishpond submitted by ${fishpond.giverName}?`
+                `Are you sure you want to delete the Fishpond for ${fishpond.receiverName}?`
             );
 
 
@@ -1498,7 +1510,6 @@ exportBtn.addEventListener(
     "click",
     () => {
 
-
         if (
             allFishponds.length === 0
         ) {
@@ -1514,12 +1525,6 @@ exportBtn.addEventListener(
 
         const headers = [
 
-            "Giver Roll No",
-
-            "Giver Name",
-
-            "Giver Class",
-
             "Receiver Roll No",
 
             "Receiver Name",
@@ -1530,7 +1535,7 @@ exportBtn.addEventListener(
 
             "Fishpond Content",
 
-            "Audio File",
+            "Media Link",
 
             "Date & Time"
 
@@ -1550,24 +1555,17 @@ exportBtn.addEventListener(
 
                     return [
 
-                        fishpond.giverRoll,
+                        fishpond.receiverRoll || "",
 
-                        fishpond.giverName,
+                        fishpond.receiverName || "",
 
-                        fishpond.giverClass,
+                        fishpond.receiverClass || "",
 
-                        fishpond.receiverRoll,
+                        fishpond.fishpondType || "",
 
-                        fishpond.receiverName,
+                        fishpond.fishpondContent || "",
 
-                        fishpond.receiverClass,
-
-                        fishpond.fishpondType,
-
-                        fishpond.fishpondContent,
-
-                        fishpond.audioFileName ||
-                        "",
+                        fishpond.mediaLink || "",
 
                         dateTime
 
